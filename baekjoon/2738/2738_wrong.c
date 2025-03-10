@@ -13,12 +13,12 @@ int main(void)
     {
         memset(A[i], 0x00, MATRIX_MAX_SIZE);
 
-        for(j = 0; j < M; j++)
+        for(j = 0; j < N; j++)
         {
             scanf("%d", A[i] + j);
         }
     }
-    for(i = 0; i < N; i++)
+    for(i = 0; i < M; i++)
     {
         memset(B[i], 0x00, MATRIX_MAX_SIZE);
 
@@ -30,7 +30,7 @@ int main(void)
 
     for(i = 0; i < N; i++)
     {
-        for(j = 0; j < M; j++)
+        for(j = 0; j < N; j++)
         {
             A[i][j] += B[i][j];
         }
@@ -38,7 +38,7 @@ int main(void)
 
     for(i = 0; i < N; i++)
     {
-        for(j = 0; j < M; j++)
+        for(j = 0; j < N; j++)
         {
             printf("%d ", A[i][j]);
         }

@@ -14,3 +14,10 @@ convince	납득시키다
 primitive	초기의, 원시적 단계의
 lexicographically	사전 집필 상
 
+get out of	~에서 나오다, 알아내다, 얻다
+draft	선발하다, 초안, 어음
+
+rational number	유리수
+rational	합리적인, 이성적인
+traversal	가로지르는, 여기저기 돌아다니는, 운행법
+

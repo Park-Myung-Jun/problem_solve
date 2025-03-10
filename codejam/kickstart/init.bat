@@ -3,30 +3,31 @@
 set argc=0
 for %%i in (%*) do set /A argc+=1
 
-if %argc% neq 3 (
-	echo how to use : %0 [relative_path] [name]
+if %argc% neq 2 (
+	echo how to use : %0 [name] [subtask_count]
 	exit /b 1
 )
 
-set relative_path=%1
-set name=%2
+set name=%1
+set subtask_count=%2
 
 if not exist dump mkdir dump
-if not exist source mkdir source
 
-type NUL > source\%relative_path%\%name%.c
+if not exist %name%.c (
+	type NUL > %name%.c
+)
 
-echo @echo off>%relative_path%\build.bat
-echo.>>%relative_path%\build.bat
-echo gcc -o %relative_path%\%name% source\%relative_path%\%name%.c>>%relative_path%\build.bat
+gcc -o %name% %name%.c
 
-echo @echo off>%relative_path%\compare.bat
-echo.>>%relative_path%\compare.bat
-echo (%relative_path%\%name% ^< %relative_path%\problem_statement\%name%_sample_ts1_input.txt) ^> %relative_path%\dump\%name%_test.txt>>%relative_path%\compare.bat
-echo fc /W %relative_path%\dump\%name%_test.txt %relative_path%\problem_statement\%name%_sample_ts1_output.txt>>%relative_path%\compare.bat
-echo.>>%relative_path%\compare.bat
-echo (%relative_path%\%name% ^< %relative_path%\data\secret\subtask1\1.in) ^> %relative_path%\dump\%name%_subtask1_test.txt>>%relative_path%\compare.bat
-echo fc /W %relative_path%\dump\%name%_subtask1_test.txt %relative_path%\data\secret\subtask1\1.ans>>%relative_path%\compare.bat
-echo.>>%relative_path%\compare.bat
-echo (%relative_path%\%name% ^< %relative_path%\data\secret\subtask2\1.in) ^> %relative_path%\dump\%name%_subtask2_test.txt>>%relative_path%\compare.bat
-echo fc /W %relative_path%\dump\%name%_subtask2_test.txt %relative_path%\data\secret\subtask2\1.ans>>%relative_path%\compare.bat
+if exist %name%.exe (
+	(%name%.exe < problem_statement\%name%_sample_ts1_input.txt) > dump\%name%_sample_ts1_test.txt
+	fc /W problem_statement\%name%_sample_ts1_output.txt dump\%name%_sample_ts1_test.txt
+
+	set count=1
+	for %%i in (%*) do (
+		(%name%.exe < subtask%count%\1.in) > dump\1.test
+		fc /W subtask%count%\1.ans dump\1.test
+		
+		set /A count+=1
+	)
+)
