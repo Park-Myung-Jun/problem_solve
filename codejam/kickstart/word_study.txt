@@ -21,3 +21,6 @@ rational number	유리수
 rational	합리적인, 이성적인
 traversal	가로지르는, 여기저기 돌아다니는, 운행법
 
+superior	우수한
+tactics	전술, 책략, 병법
+
