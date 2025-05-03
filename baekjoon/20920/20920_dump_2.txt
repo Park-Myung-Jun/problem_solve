@@ -1,0 +1,18 @@
+appearance 10
+append 6
+attendance 10
+swim 4
+swift 5
+swift 5
+swift 5
+mouse 5
+wallet 6
+mouse 5
+ice 3
+age 3
+swift
+mouse
+appearance
+attendance
+append
+wallet

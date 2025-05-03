@@ -1,0 +1,10 @@
+apple 5
+ant 3
+sand 4
+apple 5
+append 6
+sand 4
+sand 4
+sand
+apple
+append
